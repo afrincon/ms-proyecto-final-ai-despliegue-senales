@@ -9,6 +9,6 @@ WORKDIR /app
 COPY --from=build-stage /tmp/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY . .
-ADD https://github.com/afrincon/ms-proyecto-dmn-pss/releases/download/untagged-7a8678b9bb81be44927a/modelo.h5 /app/modelo.h5
+ADD https://github.com/afrincon/ms-proyecto-final-ai-despliegue-senales/releases/download/v1.0/modelo.h5 /app/modelo.h5
 EXPOSE 8080
 CMD ["python", "main.py"]
