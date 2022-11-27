@@ -1,0 +1,11 @@
+# files
+.env
+*.h5
+
+
+
+# directories
+__pycache__
+.vscode
+mosquitto/data/*
+mosquitto/log/*

@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "proyecto"
+version = "0.1.0"
+description = "proyecto final despliegue de modelos y de procesamiento de señales"
+authors = ["Andres Felipe Rincon <zero389@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+fastapi = "^0.87.0"
+fastapi-mqtt = "^1.0.6"
+pydantic = "^1.10.2"
+pymongo = "^4.3.3"
+motor = "^3.1.1"
+tensorflow = "^2.11.0"
+fastapi-utils = "^0.2.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+python-dotenv = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
