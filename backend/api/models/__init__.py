@@ -1,1 +1,1 @@
-from .models import ExerciseModel, InferenceModel
+from .models import ExerciseModel, InferenceModel, ExerciseInput
