@@ -9,6 +9,6 @@ export class ExercisesService {
   constructor(private http: HttpClient) { }
 
   getListExercises() {
-    return this.http.get('http://192.168.1.1:8000/inferences');
+    return this.http.get('http://192.168.1.1:8080/inferences');
   }
 }

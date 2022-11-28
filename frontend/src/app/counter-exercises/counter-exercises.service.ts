@@ -10,6 +10,6 @@ export class CounterExercisesService {
   constructor(private http: HttpClient) { }
 
   getCounterExercises(): Observable<any> {
-    return this.http.get('http://192.168.1.1:8000/inferences/countbytype');
+    return this.http.get('http://192.168.1.1:8080/inferences/count-by-type');
   }
 }
