@@ -17,7 +17,9 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def startup_event():
-    app.state.model = ModelLoader(path="modelo.h5", name="model inferences api")
+    app.state.model = ModelLoader(
+        path="modelo.h5", name="model inferences api", version="1.0.0"
+    )
 
 
 app.add_middleware(

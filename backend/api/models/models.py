@@ -1,6 +1,6 @@
 import datetime
 from bson import ObjectId
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
 
 
 class PyObjectId(ObjectId):
@@ -17,6 +17,15 @@ class PyObjectId(ObjectId):
     @classmethod
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
+
+
+class ExerciseInput(BaseModel):
+    axis_x: float
+    axis_y: float
+    axis_z: float
+
+    def to_list(self):
+        return [self.axis_x, self.axis_y, self.axis_z]
 
 
 class ExerciseModel(BaseModel):
