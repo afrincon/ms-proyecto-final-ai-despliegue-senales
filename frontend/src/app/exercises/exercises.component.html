@@ -1,0 +1,19 @@
+<h5>Listo de ejercicios realizados antes</h5>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let exercise of exercisesList | keyvalue">
+      <td>{{exercise}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>{{exercisesList}}</p>

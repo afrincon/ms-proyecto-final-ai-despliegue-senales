@@ -22,3 +22,13 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
+  frontend: 
+    image: nginx
+    container_name: frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    env_file:
+      - .env

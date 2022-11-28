@@ -19,15 +19,6 @@ class PyObjectId(ObjectId):
         field_schema.update(type="string")
 
 
-class ExerciseInput(BaseModel):
-    axis_x: float
-    axis_y: float
-    axis_z: float
-
-    def to_list(self):
-        return [self.axis_x, self.axis_y, self.axis_z]
-
-
 class ExerciseModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     axis_x: float = Field(...)
@@ -72,3 +63,12 @@ class InferenceModel(BaseModel):
                 "date": "2021-05-22 11:25",
             }
         }
+
+
+class ExerciseInput(BaseModel):
+    axis_x: float
+    axis_y: float
+    axis_z: float
+
+    def to_list(self):
+        return [self.axis_x, self.axis_y, self.axis_z]

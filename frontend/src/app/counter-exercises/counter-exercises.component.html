@@ -1,0 +1,16 @@
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ejercicio</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exercise of exercises | keyvalue">
+        <td>{{exercise["key"]}}</td>
+        <td>{{exercise["value"]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
