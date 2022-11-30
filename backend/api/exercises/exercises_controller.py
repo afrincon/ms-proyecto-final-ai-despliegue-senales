@@ -58,21 +58,18 @@ class ExercisesController:
         return created_exercise
 
     @router.post("/predict", response_description="Predict exercise")
-    async def predict_exercise(self, data: typing.List[ExerciseInput]):
-        """Return prediction"""
-        info_to_predict = [d.to_list() for d in data]
-
+    async def predict_exercise(self, data: ExerciseInput = Body(...)):
+        info_to_predict = [data.to_list()]
         len_predict = len(info_to_predict)
+        print(len_predict)
         data_to_predict = np.zeros((len_predict, 104, 3))
 
         for i in range(len_predict):
             data_to_predict[i] = np.array(info_to_predict[i])
 
         predictions = self.model.predict(data_to_predict)
-
-        data = await self.get_prediction_name(predictions)
-
-        prediction = await self.filter_prediction(data)
+        prediction_data = await self.get_prediction_name(predictions)
+        prediction = await self.filter_prediction(prediction_data)
 
         return prediction
 
