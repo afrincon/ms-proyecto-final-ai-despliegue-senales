@@ -58,7 +58,36 @@ class ExercisesController:
         return created_exercise
 
     @router.post("/predict", response_description="Predict exercise")
-    async def predict_exercise(self, data: typing.List[ExerciseInput]):
-        """Return prediction"""
-        info_to_predict = [d.to_list() for d in data]
-        print(info_to_predict)
+    async def predict_exercise(self, data: ExerciseInput = Body(...)):
+        info_to_predict = [data.to_list()]
+        len_predict = len(info_to_predict)
+        print(len_predict)
+        data_to_predict = np.zeros((len_predict, 104, 3))
+
+        for i in range(len_predict):
+            data_to_predict[i] = np.array(info_to_predict[i])
+
+        predictions = self.model.predict(data_to_predict)
+        prediction_data = await self.get_prediction_name(predictions)
+        prediction = await self.filter_prediction(prediction_data)
+
+        return prediction
+
+    async def get_prediction_name(self, predictions):
+        dict_predictions = {}
+
+        dict_predictions["ms_circle_arm"] = predictions[0][0] * 100
+        dict_predictions["ms_frontal_arm"] = predictions[0][1] * 100
+        dict_predictions["ms_no_movement"] = predictions[0][2] * 100
+        dict_predictions["ms_side_arm"] = predictions[0][3] * 100
+        dict_predictions["ms_upper_arm"] = predictions[0][4] * 100
+
+        return dict_predictions
+
+    async def filter_prediction(self, predictions):
+        dict_prediction = {}
+        for i, val in predictions.items():
+            if val * 100 > 80:
+                dict_prediction[i] = val
+
+        return dict_prediction

@@ -64,6 +64,7 @@ class InferenceModel(BaseModel):
             }
         }
 
+
 class ExerciseInput(BaseModel):
     axis_x: float
     axis_y: float
